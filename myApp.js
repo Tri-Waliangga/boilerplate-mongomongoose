@@ -14,17 +14,19 @@ let personSchema = new Schema(
 );
 
 let Person = mongoose.model('Person', personSchema);
-let person = new Person({
+
+const createAndSavePerson = async (done) => {
+  let person = new Person({
     name: "Pai", age: 19, favoriteFoods: ["egg", "banana"]
   });
-person.save();
-
-const createAndSavePerson = (done) => {
+  await person.save();
   done(null , person);
 };
 
-const createManyPeople = (arrayOfPeople, done) => {
-  done(null /*, data*/);
+
+const createManyPeople = async (arrayOfPeople, done) => {
+  let people = await Person.create(arrayOfPeople);
+  done(null , people);
 };
 
 const findPeopleByName = (personName, done) => {
