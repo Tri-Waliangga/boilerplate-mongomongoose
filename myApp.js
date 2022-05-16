@@ -3,7 +3,17 @@ let mongoose = require('mongoose');
 const uriMongo = process.env.MONGO_URI;
 mongoose.connect(uriMongo, {useNewUrlParser: true});
 
-let Person;
+const { Schema } = mongoose;
+
+let personSchema = new Schema(
+  {
+    name: {type: String, required: true},
+    age: Number,
+    favoriteFoods: [{type: String}]
+  }
+);
+
+let Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
