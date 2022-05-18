@@ -29,8 +29,9 @@ const createManyPeople = async (arrayOfPeople, done) => {
   done(null , people);
 };
 
-const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+const findPeopleByName = async (personName, done) => {
+  let people = await Person.find({name: personName});
+  done(null , people);
 };
 
 const findOneByFood = (food, done) => {
