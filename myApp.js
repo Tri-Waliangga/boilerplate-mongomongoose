@@ -52,7 +52,6 @@ const findEditThenSave = async (personId, done) => {
       person.favoriteFoods.push(foodToAdd)
       person.save();                                 
     });
-  console.log(person);
 
   done(null , person);
 };
